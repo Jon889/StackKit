@@ -43,6 +43,21 @@ typedef enum {
 } SKSiteState;
 
 typedef enum {
+	SKInboxItemStateRead = 0,
+	SKInboxItemStateUnread = 1
+} SKInboxItemState_t;
+
+typedef enum {
+	SKInboxItemTypeComment = 0,
+	SKInboxItemTypeChatMessage = 1,
+    SKInboxItemTypeNewAnswer = 2,
+    SKInboxItemTypeCareersMessage = 3,
+    SKInboxItemTypeCareersInvitations = 4,
+    SKInboxItemTypeMetaQuestion = 5,
+} SKInboxItemType_t;
+
+
+typedef enum {
 	SKUserTypeAnonymous = 0,
 	SKUserTypeUnregistered = 1,
 	SKUserTypeRegistered = 2,
