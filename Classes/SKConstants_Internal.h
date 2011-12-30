@@ -55,6 +55,7 @@ extern NSString * const SKQueryNotTagged;
 extern NSString * const SKQueryInTitle;
 extern NSString * const SKQueryAnswers;
 extern NSString * const SKQueryComments;
+extern NSString * const SKQuerySite;
 
 extern NSString * const SKAPIAbout_Me;
 extern NSString * const SKAPIAccept_Rate;
@@ -87,6 +88,7 @@ extern NSString * const SKAPIEmail_Hash;
 extern NSString * const SKAPIFavorite_Count;
 extern NSString * const SKAPIGold;
 extern NSString * const SKAPIItem_Type;
+extern NSString * const SKAPIItems;
 extern NSString * const SKAPIIs_Unread;
 extern NSString * const SKAPILast_Access_Date;
 extern NSString * const SKAPILast_Activity_Date;

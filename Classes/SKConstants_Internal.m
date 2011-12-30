@@ -8,7 +8,7 @@
 
 #import "SKConstants_Internal.h"
 
-NSString * const SKFrameworkAPIKey = @"hqh1uqA-AkeM48lxWWPeWA";
+NSString * const SKFrameworkAPIKey = @"0H)Nc22E3x6COif7FIeDSg((";
 
 #pragma mark -
 #pragma mark Statistics Keys
@@ -68,6 +68,7 @@ NSString * const SKAPIEmail_Hash = @"email_hash";
 NSString * const SKAPIFavorite_Count = @"favorite_count";
 NSString * const SKAPIGold = @"gold";
 NSString * const SKAPIItem_Type = @"item_type";
+NSString * const SKAPIItems = @"items";
 NSString * const SKAPIIs_Unread = @"is_unread";
 NSString * const SKAPILast_Access_Date = @"last_access_date";
 NSString * const SKAPILast_Activity_Date = @"last_activity_date";
@@ -121,3 +122,4 @@ NSString * const SKQueryNotTagged = @"nottagged";
 NSString * const SKQueryInTitle = @"intitle";
 NSString * const SKQueryAnswers = @"answers";
 NSString * const SKQueryComments = @"comments";
+NSString * const SKQuerySite = @"site";
