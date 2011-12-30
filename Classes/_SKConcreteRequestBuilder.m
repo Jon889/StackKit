@@ -109,7 +109,7 @@
 	NSString * apiPath = [NSString stringWithFormat:@"%@?%@", 
 						  ([self path] ? [self path] : @""), 
 						  [query sk_queryString]];
-	
+	NSString * urlBase = [NSString stringWithFormat:@"https://api.stackexchange.com/%@", SKAPIVersion];
 	NSString * fullAPIString = [urlBase stringByAppendingString:apiPath];
 	
 	[self setURL:[NSURL URLWithString:fullAPIString]];

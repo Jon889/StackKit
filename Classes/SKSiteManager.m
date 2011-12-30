@@ -103,8 +103,8 @@ __attribute__((destructor)) void SKSiteManager_destruct() {
             NSMutableDictionary *query = [NSMutableDictionary dictionary];
             [query setObject:[NSNumber numberWithUnsignedInteger:currentPage] forKey:SKQueryPage];
             [query setObject:[NSNumber numberWithUnsignedInteger:SKPageSizeLimitMax] forKey:SKQueryPageSize];
-            
-            NSString *url = [NSString stringWithFormat:@"http://stackauth.com/%@/sites?%@", SKAPIVersion, [query sk_queryString]];
+
+            NSString *url = [NSString stringWithFormat:@"https://api.stackexchange.com/%@/sites?%@", SKAPIVersion, [query sk_queryString]];
             
             NSURL *requestURL = [NSURL URLWithString:url];
             NSURLRequest *request = [NSURLRequest requestWithURL:requestURL];
@@ -167,13 +167,12 @@ __attribute__((destructor)) void SKSiteManager_destruct() {
     return [sites autorelease]; 
 }  
 
-- (SKSite*) siteWithAPIURL:(NSURL *)aURL
+- (SKSite*) siteWithAPIParameter:(NSString *)aParameter
 {
     NSArray *knownSites = [self knownSites];
     
-    NSString * apiHost = [aURL host];
     for (SKSite * aSite in knownSites) {
-        if ([[[aSite apiURL] host] isEqual:apiHost]) {
+        if ([aSite.apiParameter isEqualToString:aParameter]) {
             return aSite;
         }
     }
@@ -194,23 +193,23 @@ __attribute__((destructor)) void SKSiteManager_destruct() {
 }
 
 - (SKSite*) stackOverflowSite {
-    return [self siteWithAPIURL:[NSURL URLWithString:@"http://api.stackoverflow.com"]];
+    return [self siteWithAPIParameter:@"stackoverflow"];
 }
 
 - (SKSite*) metaStackOverflowSite {
-    return [self siteWithAPIURL:[NSURL URLWithString:@"http://api.meta.stackoverflow.com"]];
+    return [self siteWithAPIParameter:@"meta.stackoverflow"];
 }
 
 - (SKSite*) stackAppsSite {
-    return [self siteWithAPIURL:[NSURL URLWithString:@"http://api.stackapps.com"]];
+    return [self siteWithAPIParameter:@"stackapps"];
 }
 
 - (SKSite*) serverFaultSite {
-    return [self siteWithAPIURL:[NSURL URLWithString:@"http://api.serverfault.com"]];
+    return [self siteWithAPIParameter:@"serverfault"];
 }
 
 - (SKSite*) superUserSite {
-    return [self siteWithAPIURL:[NSURL URLWithString:@"http://api.superuser.com"]];
+    return [self siteWithAPIParameter:@"superuser"];
 }
 
 #pragma mark -

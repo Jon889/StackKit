@@ -50,7 +50,7 @@ NSString * const SKSiteAPIKey = @"key";
 @implementation SKSite
 
 @synthesize apiKey;
-@synthesize apiURL;
+@synthesize apiParameter;
 @synthesize timeoutInterval;
 
 @synthesize name;
@@ -96,11 +96,11 @@ NSString * const SKSiteAPIKey = @"key";
 - (BOOL) isEqualToSite:(SKSite*)anotherSite
 {
 	//Sites are equal if their api urls are equal
-	return [[self apiURL] isEqual:[anotherSite apiURL]];
+	return [[self apiParameter] isEqual:[anotherSite apiParameter]];
 }
 
 - (NSString *)description {
-    return [NSString stringWithFormat:@"%@(%@)", [super description], [self apiURL]];
+    return [NSString stringWithFormat:@"%@(%@)", [super description], [self apiParameter]];
 }
 
 - (NSOperationQueue *) requestQueue {
@@ -218,7 +218,7 @@ NSString * const SKSiteAPIKey = @"key";
     NSString *applicationSupportDirectory = [[SKSiteManager sharedManager] applicationSupportDirectory];
     NSError *error = nil;
     
-	NSString *storeFileName = [NSString stringWithFormat:@"%@.db", [[self apiURL] host]];
+	NSString *storeFileName = [NSString stringWithFormat:@"%@.db", [self apiParameter]];
     NSURL *url = [NSURL fileURLWithPath:[applicationSupportDirectory stringByAppendingPathComponent:storeFileName]];
     persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:mom];
     if (![persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType 

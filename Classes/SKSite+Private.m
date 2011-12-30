@@ -28,8 +28,7 @@
 	name = [[mainSiteDictionary objectForKey:@"name"] retain];
 	logoURL = [[NSURL alloc] initWithString:[mainSiteDictionary objectForKey:@"logo_url"]];
 	
-	NSString * apiPath = [mainSiteDictionary objectForKey:@"api_endpoint"];
-	apiURL = [[NSURL alloc] initWithString:[apiPath stringByAppendingFormat:@"/%@", SKAPIVersion]];
+	apiParameter = [[mainSiteDictionary objectForKey:@"api_site_parameter"] retain];
 	
 	siteURL = [[NSURL alloc] initWithString:[mainSiteDictionary objectForKey:@"site_url"]];
 	summary = [[mainSiteDictionary objectForKey:@"description"] retain];
@@ -63,7 +62,7 @@
 	requestQueue = [[NSOperationQueue alloc] init];
 	[requestQueue setMaxConcurrentOperationCount:1];
 	cache = [[NSMutableDictionary alloc] init];
-    
+
     apiKey = [SKFrameworkAPIKey retain];
 }
 
@@ -71,7 +70,7 @@
 	[apiKey release];
 	[name release];
 	[logoURL release];
-	[apiURL release];
+	[apiParameter release];
 	[siteURL release];
 	[summary release];
 	[iconURL release];

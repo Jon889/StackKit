@@ -19,7 +19,7 @@
 
 - (NSArray *) knownSites;
 
-- (SKSite*) siteWithAPIURL:(NSURL *)aURL;
+- (SKSite*) siteWithAPIParameter:(NSString *)aURL;
 
 - (SKSite*) stackOverflowSite;
 - (SKSite*) metaStackOverflowSite;

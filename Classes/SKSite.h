@@ -16,7 +16,7 @@ extern NSString * const SKSiteAPIKey;
 
 @interface SKSite : NSObject {
 	NSString * apiKey;
-	NSURL * apiURL;
+	NSString * apiParameter;
 	NSString * name;
 	NSURL * siteURL;
 	NSURL * logoURL;
@@ -42,7 +42,7 @@ extern NSString * const SKSiteAPIKey;
 }
 
 @property (copy) NSString * apiKey;
-@property (readonly) NSURL * apiURL;
+@property (readonly) NSString * apiParameter;
 @property (readonly) NSString * apiVersion;
 @property (readonly) NSArray * aliases;
 
