@@ -94,12 +94,12 @@ __attribute__((destructor)) void SKSiteManager_destruct() {
     NSArray *sites = [self cachedSites];
     
     if(!sites) {
-        NSUInteger total = NSUIntegerMax;
+        BOOL hasMore = YES;
         NSMutableArray *allItems = [NSMutableArray array];
         NSUInteger currentPage = 1;
         NSUInteger lastCount = NSUIntegerMax;
         
-        while ([allItems count] < total) {
+        while (hasMore) {
             NSMutableDictionary *query = [NSMutableDictionary dictionary];
             [query setObject:[NSNumber numberWithUnsignedInteger:currentPage] forKey:SKQueryPage];
             [query setObject:[NSNumber numberWithUnsignedInteger:SKPageSizeLimitMax] forKey:SKQueryPageSize];
@@ -124,14 +124,15 @@ __attribute__((destructor)) void SKSiteManager_destruct() {
                 SKLog(@"Error fetching sites ID:%i Name:%@ Description:%@", [responseObjects objectForKey:@"error_id"], [responseObjects objectForKey:@"error_name"], [responseObjects objectForKey:@"description"]);
                 break;
             }
-#warning switch to has_more
-            NSNumber *totalNumberOfItems = [responseObjects objectForKey:@"total"];
-            if (total != [totalNumberOfItems unsignedIntegerValue]) {
-                total = [totalNumberOfItems unsignedIntegerValue];
-            }
-            
+
             NSArray *items = [responseObjects objectForKey:SKAPIItems];
             [allItems addObjectsFromArray:items];
+            
+            //break is has_more is false;
+            if ([[responseObjects objectForKey:@"has_more"] boolValue] == NO) {
+                hasMore = NO;//this is a failsafe, I really don't want to be responsible for "DDoS attack" on API
+                break;
+            }
             
             //also break if we didn't get any objects on this loop
             NSUInteger currentCount = [allItems count];
