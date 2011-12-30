@@ -9,6 +9,8 @@
 #import "SKStatisticsOperation.h"
 #import "NSDictionary+SKAdditions.h"
 #import "SKJSONParser.h"
+#import "SKConstants.h"
+#import "SKConstants_Internal.h"
 
 #import "SKSiteStatistics.h"
 #import "SKSiteStatistics+Private.h"
@@ -28,10 +30,12 @@
 
 - (void) main {
     
-	NSDictionary * queryDictionary = [NSDictionary dictionaryWithObject:[[self site] apiKey] forKey:SKSiteAPIKey];
-	NSString * statsPath = [NSString stringWithFormat:@"stats?%@", [queryDictionary sk_queryString]];
-	
-	NSString * statsCall = [[[[self site] apiURL] absoluteString] stringByAppendingPathComponent:statsPath];
+    NSDictionary * queryDictionary = [NSDictionary dictionaryWithObjectsAndKeys:[[self site] apiKey], SKSiteAPIKey,
+                                                                                [[self site] apiParameter], SKQuerySite, nil];
+    
+	NSString * statsPath = [NSString stringWithFormat:@"info?%@", [queryDictionary sk_queryString]];
+
+	NSString * statsCall = [[NSString stringWithFormat:@"https://api.stackexchange.com/%@", SKAPIVersion] stringByAppendingPathComponent:statsPath];
 	
 	NSURL * statsURL = [NSURL URLWithString:statsCall];
 	
@@ -47,7 +51,7 @@
     
 	if ([responseDictionary isKindOfClass:[NSDictionary class]] && !error) {
         NSDictionary *dictionary = nil;
-        NSArray *statsArray = [responseDictionary objectForKey:@"statistics"];
+        NSArray *statsArray = [responseDictionary objectForKey:SKAPIItems];
         
         if([statsArray isKindOfClass:[NSArray class]]) {   
             dictionary = [statsArray objectAtIndex:0];

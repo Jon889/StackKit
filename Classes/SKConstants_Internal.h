@@ -20,11 +20,9 @@ extern NSString * const SKStatsTotalUsers;
 extern NSString * const SKStatsQuestionsPerMinute;
 extern NSString * const SKStatsAnswersPerMinute;
 extern NSString * const SKStatsBadgesPerMinute;
+extern NSString * const SKStatsNewActiveUsers;
 extern NSString * const SKStatsViewsPerDay;
-
-extern NSString * const SKStatsAPIInfo;
-extern NSString * const SKStatsAPIInfoVersion;
-extern NSString * const SKStatsAPIInfoRevision;
+extern NSString * const SKStatsAPIRevision;
 
 extern NSString * const SKStateSiteInfo;
 extern NSString * const SKStatsSiteInfoName;

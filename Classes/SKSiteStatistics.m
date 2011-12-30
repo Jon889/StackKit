@@ -16,8 +16,8 @@
 @synthesize totalQuestions = _totalQuestions, totalUnansweredQuestions = _totalUnansweredQuestions, totalAcceptedAnswers = _totalAcceptedAnswers;
 @synthesize totalAnswers = _totalAnswers, totalComments = _totalComments, totalVotes = _totalVotes, totalBadges = _totalBadges, totalUsers = _totalUsers;
 @synthesize questionsPerMinute = _questionsPerMinute, answersPerMinute = _answersPerMinute, badgesPerMinute = _badgesPerMinute;
-@synthesize viewsPerDay = _viewsPerDay;
-@synthesize apiVersion=_apiVersion, apiRevision=_apiRevision;
+@synthesize viewsPerDay = _viewsPerDay, recentActiveUsers = _recentActiveUsers;
+@synthesize apiRevision=_apiRevision;
 
 #pragma mark -
 #pragma mark Instantiating
@@ -48,11 +48,9 @@
         _questionsPerMinute = [[responseDictionary objectForKey:SKStatsQuestionsPerMinute] retain];
         _answersPerMinute = [[responseDictionary objectForKey:SKStatsAnswersPerMinute] retain];
         _badgesPerMinute = [[responseDictionary objectForKey:SKStatsBadgesPerMinute] retain];
-        _viewsPerDay = [[responseDictionary objectForKey:SKStatsViewsPerDay] retain];
-        
-        NSDictionary *apiInfo = [responseDictionary objectForKey:SKStatsAPIInfo];
-        _apiVersion = [[apiInfo objectForKey:SKStatsAPIInfoVersion] retain];
-        _apiRevision = [[apiInfo objectForKey:SKStatsAPIInfoRevision] retain];
+        _viewsPerDay = [[responseDictionary objectForKey:SKStatsViewsPerDay] retain];//REDUNDANT see stackapp question 2854
+        _recentActiveUsers = [[responseDictionary objectForKey:SKStatsNewActiveUsers] retain];
+        _apiRevision = [[responseDictionary objectForKey:SKStatsAPIRevision] retain];
     }
     
     return self;
@@ -72,8 +70,8 @@
     [_questionsPerMinute release];
     [_answersPerMinute release];
     [_badgesPerMinute release];
+    [_recentActiveUsers release];
     [_viewsPerDay release];
-    [_apiVersion release];
     [_apiRevision release];
     
     [super dealloc];

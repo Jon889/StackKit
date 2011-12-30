@@ -25,8 +25,8 @@
     NSNumber *_answersPerMinute;
     NSNumber *_badgesPerMinute;
     
-    NSNumber *_viewsPerDay;
-    
+    NSNumber *_viewsPerDay;//REDUNDANT? see stackapps 2854
+    NSNumber *_recentActiveUsers; //API field key is new_active_users, but starting with new is the Cocoa naming convention for returning 'owned' objects 
     NSString *_apiVersion;
     NSString *_apiRevision;
 }
@@ -44,7 +44,6 @@
 @property (readonly) NSNumber *answersPerMinute;
 @property (readonly) NSNumber *badgesPerMinute;
 @property (readonly) NSNumber *viewsPerDay;
-@property (readonly) NSString *apiVersion;
+@property (readonly) NSNumber *recentActiveUsers;
 @property (readonly) NSString *apiRevision;
-
 @end

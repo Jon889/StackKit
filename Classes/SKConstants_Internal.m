@@ -16,18 +16,16 @@ NSString * const SKStatsTotalQuestions = @"total_questions";
 NSString * const SKStatsTotalUnansweredQuestions = @"total_unanswered";
 NSString * const SKStatsTotalAcceptedAnswers = @"total_accepted";
 NSString * const SKStatsTotalAnswers = @"total_answers";
+NSString * const SKStatsQuestionsPerMinute = @"questions_per_minute";
+NSString * const SKStatsAnswersPerMinute = @"answers_per_minute";
 NSString * const SKStatsTotalComments = @"total_comments";
 NSString * const SKStatsTotalVotes = @"total_votes";
 NSString * const SKStatsTotalBadges = @"total_badges";
-NSString * const SKStatsTotalUsers = @"total_users";
-NSString * const SKStatsQuestionsPerMinute = @"questions_per_minute";
-NSString * const SKStatsAnswersPerMinute = @"answers_per_minute";
 NSString * const SKStatsBadgesPerMinute = @"badges_per_minute";
-NSString * const SKStatsViewsPerDay = @"views_per_day";
-
-NSString * const SKStatsAPIInfo = @"api_version";
-NSString * const SKStatsAPIInfoVersion = @"version";
-NSString * const SKStatsAPIInfoRevision = @"revision";	
+NSString * const SKStatsTotalUsers = @"total_users";
+NSString * const SKStatsNewActiveUsers = @"new_active_users";
+NSString * const SKStatsViewsPerDay = @"views_per_day";//REDUNDANT? see stackapps question
+NSString * const SKStatsAPIRevision = @"api_revision";	
 
 NSString * const SKStateSiteInfo = @"site";
 NSString * const SKStatsSiteInfoName = @"name";
