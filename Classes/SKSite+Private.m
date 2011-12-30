@@ -24,7 +24,8 @@
 #pragma mark Init/Dealloc
 
 - (void) mergeInformationFromDictionary:(NSDictionary *)dictionary {
-    NSDictionary *mainSiteDictionary = [dictionary objectForKey:@"main_site"];
+    NSDictionary *mainSiteDictionary = dictionary;
+#warning above line is temporary, see what effect renaming would have.
 	name = [[mainSiteDictionary objectForKey:@"name"] retain];
 	logoURL = [[NSURL alloc] initWithString:[mainSiteDictionary objectForKey:@"logo_url"]];
 	

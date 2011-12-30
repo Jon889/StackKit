@@ -126,7 +126,7 @@ __attribute__((destructor)) void SKSiteManager_destruct() {
                 total = [totalNumberOfItems unsignedIntegerValue];
             }
             
-            NSArray *items = [responseObjects objectForKey:@"items"];
+            NSArray *items = [responseObjects objectForKey:SKAPIItems];
             [allItems addObjectsFromArray:items];
             
             //also break if we didn't get any objects on this loop

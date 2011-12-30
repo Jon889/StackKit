@@ -13,6 +13,7 @@
 #import "SKObject+Private.h"
 #import "SKSite+Private.h"
 #import "SKConstants.h"
+#import "SKConstants_Internal.h"
 #import "SKJSONParser.h"
 #import "SKMacros.h"
 
@@ -83,6 +84,7 @@ NSString * SKErrorMessageKey = @"message";
 	
     [request setFetchTotal:[[responseObjects objectForKey:SKFetchTotalKey] unsignedIntegerValue]];
 	
+#warning THERE IS NO ERROR DICT IN 2.0
 	//check for an error in the response
 	NSDictionary * errorDictionary = [responseObjects objectForKey:SKErrorResponseKey];
 	if (errorDictionary != nil) {
@@ -97,7 +99,7 @@ NSString * SKErrorMessageKey = @"message";
 	
 	//pull out the data container
     Class entity = [request entity];
-	NSString * dataKey = [entity apiResponseDataKey];
+	NSString * dataKey = SKAPIItems;
 	id dataObject = [responseObjects objectForKey:dataKey];
 	
 	NSMutableArray * objects = [[NSMutableArray alloc] init];	

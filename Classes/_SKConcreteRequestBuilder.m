@@ -104,8 +104,7 @@
 		return;
 	}
 	
-	NSURL * apiURL = [[fetchRequest site] apiURL];
-	NSString * urlBase = [apiURL absoluteString];
+	[query setObject:[[fetchRequest site] apiParameter] forKey:SKQuerySite];
 	NSString * apiPath = [NSString stringWithFormat:@"%@?%@", 
 						  ([self path] ? [self path] : @""), 
 						  [query sk_queryString]];
