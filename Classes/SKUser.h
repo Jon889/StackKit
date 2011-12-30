@@ -13,24 +13,40 @@
 {
 }
 
-@property (nonatomic, readonly) NSString * aboutMe;
-@property (nonatomic, readonly) NSNumber * acceptRate;
+@property (nonatomic, readonly) NSString * aboutMe; //Not in Default Filter
+@property (nonatomic, readonly) NSNumber * acceptRate;//removed?
 @property (nonatomic, readonly) NSNumber * age;
-@property (nonatomic, readonly) NSString * associationID;
+@property (nonatomic, readonly) NSNumber * accountID;
 @property (nonatomic, readonly) NSDate * creationDate;
 @property (nonatomic, readonly) NSString * displayName;
-@property (nonatomic, readonly) NSNumber * downVotes;
-@property (nonatomic, readonly) NSString * emailHash;
+@property (nonatomic, readonly) NSNumber * downVotes; //Not in Default Filter
 @property (nonatomic, readonly) NSDate * lastAccessDate;
 @property (nonatomic, readonly) NSString * location;
 @property (nonatomic, readonly) NSNumber * reputation;
-@property (nonatomic, readonly) NSNumber * upVotes;
+@property (nonatomic, readonly) NSNumber * upVotes; //Not in Default Filter
 @property (nonatomic, readonly) NSNumber * userID;
 @property (nonatomic, readonly) NSNumber * userType;
-@property (nonatomic, readonly) NSNumber * viewCount;
-@property (nonatomic, readonly) NSNumber * answerCount;
-@property (nonatomic, readonly) NSNumber * questionCount;
+@property (nonatomic, readonly) NSNumber * viewCount; //Not in Default Filter
+@property (nonatomic, readonly) NSNumber * answerCount; //Not in Default Filter
+@property (nonatomic, readonly) NSNumber * questionCount; //Not in Default Filter
 @property (nonatomic, readonly) NSURL * websiteURL;
+
+//2.0 properties
+@property (nonatomic, readonly) NSURL * profileImageURL;
+@property (nonatomic, readonly) NSNumber *reputationChangeDay;
+@property (nonatomic, readonly) NSNumber *reputationChangeWeek;
+@property (nonatomic, readonly) NSNumber *reputationChangeMonth;
+@property (nonatomic, readonly) NSNumber *reputationChangeQuarter;
+@property (nonatomic, readonly) NSNumber *reputationChangeYear;
+
+@property (nonatomic, readonly) NSDate * lastModifiedDate;
+@property (nonatomic, readonly) NSNumber * isEmployee; //BOOL
+@property (nonatomic, readonly) NSURL * link;
+@property (nonatomic, readonly) NSDate * timedPenaltyDate;
+@property (nonatomic, readonly) NSNumber *goldBadgeCount;
+@property (nonatomic, readonly) NSNumber *silverBadgeCount;
+@property (nonatomic, readonly) NSNumber *bronzeBadgeCount;
+
 
 @property (nonatomic, readonly) NSSet * awardedBadges;
 @property (nonatomic, readonly) NSSet * directedComments;
