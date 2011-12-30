@@ -221,7 +221,7 @@ __attribute__((destructor)) void SKSiteManager_destruct() {
 
 - (SKSite*) mainSiteForSite:(SKSite *)aSite
 {
-    NSString * host = [[aSite apiURL] host];
+    NSString * host = [[aSite siteURL] host];
 	NSArray * originalHostComponents = [host componentsSeparatedByString:@"."];
 	if ([originalHostComponents containsObject:@"meta"] == NO) { return aSite; }
 	
@@ -232,7 +232,7 @@ __attribute__((destructor)) void SKSiteManager_destruct() {
 	[newHostComponents release];
 	
 	for (SKSite * potentialSite in [self knownSites]) {
-		if ([[[potentialSite apiURL] host] isEqual:qaHost]) {
+		if ([[[potentialSite siteURL] host] isEqual:qaHost]) {
 			return potentialSite;
 		}		
 	}
@@ -244,7 +244,7 @@ __attribute__((destructor)) void SKSiteManager_destruct() {
     //takes an API URL (api.somesite.com) and transforms it into (api.meta.somesite.com)
 	//and then looks for a known site that has the same hostname
 	
-	NSString * host = [[aSite apiURL] host];
+	NSString * host = [[aSite siteURL] host];
 	
 	NSArray * originalHostComponents = [host componentsSeparatedByString:@"."];
 	//if we are a meta site, return ourself
@@ -260,7 +260,7 @@ __attribute__((destructor)) void SKSiteManager_destruct() {
 	[newHostComponents release];
 	
 	for (SKSite * potentialSite in [self knownSites]) {
-		if ([[[potentialSite apiURL] host] isEqual:metaHost]) {
+		if ([[[potentialSite siteURL] host] isEqual:metaHost]) {
 			return potentialSite;
 		}
 	}
@@ -271,7 +271,7 @@ __attribute__((destructor)) void SKSiteManager_destruct() {
 - (SKSite*) companionSiteForSite:(SKSite *)aSite
 {
     //if this is a meta site, return the QA site (and vice versa)
-	if ([[[aSite apiURL] host] rangeOfString:@".meta."].location != NSNotFound) {
+	if ([[[aSite siteURL] host] rangeOfString:@".meta."].location != NSNotFound) {
 		return [self mainSiteForSite:aSite];
 	} else {
 		return [self metaSiteForSite:aSite];
