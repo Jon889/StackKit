@@ -120,7 +120,11 @@ __attribute__((destructor)) void SKSiteManager_destruct() {
                 allItems = nil;
                 break;
             }
-            
+            if ([responseObjects objectForKey:@"error_id"]) {//need to const these
+                SKLog(@"Error fetching sites ID:%i Name:%@ Description:%@", [responseObjects objectForKey:@"error_id"], [responseObjects objectForKey:@"error_name"], [responseObjects objectForKey:@"description"]);
+                break;
+            }
+#warning switch to has_more
             NSNumber *totalNumberOfItems = [responseObjects objectForKey:@"total"];
             if (total != [totalNumberOfItems unsignedIntegerValue]) {
                 total = [totalNumberOfItems unsignedIntegerValue];
