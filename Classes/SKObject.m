@@ -131,10 +131,10 @@
     if ([property hasSuffix:@"Date"]) {
         // by convention, Date properties end with "Date" (creationDate, lastAccessDate, etc)
         return [NSDate dateWithTimeIntervalSince1970:[value doubleValue]];
-    } else if ([property hasSuffix:@"URL"]) {
+    } else if ([property hasSuffix:@"URL"] || [property isEqualToString:@"link"]) {
         // by conventino, URL properties end with "URL" (websiteURL, etc)
         return [NSURL URLWithString:value];
-    }
+    } 
     return value;
 }
 
