@@ -33,17 +33,16 @@
 	SKSite * site = [[SKSiteManager sharedManager] stackOverflowSite];
 	
 	SKSiteStatistics * stats = [site statistics];
-	
-	STAssertEqualObjects([stats apiVersion], SKAPIVersion, @"API versions do not match!");
+    STAssertTrue([[stats totalQuestions] intValue] != 0, @"StackOverflow should have more than 0 questions!");
 }
 
 - (void) testMetaSite {
 	SKSite * so = [[SKSiteManager sharedManager] stackOverflowSite];
 	SKSite * metaSO = [so metaSite];
-	STAssertEqualObjects([[metaSO apiURL] host], @"api.meta.stackoverflow.com", @"Unexpected meta URL: %@", [metaSO apiURL]);
+	STAssertEqualObjects([[metaSO siteURL] host], @"meta.stackoverflow.com", @"Unexpected meta URL: %@", [metaSO siteURL]);
 	
 	SKSite * metaMetaSO = [metaSO metaSite];
-	STAssertTrue(metaSO == metaMetaSO, @"meta.stackoverflow.com should not have a meta site, but found: %@", [metaMetaSO apiURL]);
+	STAssertTrue(metaSO == metaMetaSO, @"meta.stackoverflow.com should not have a meta site, but found: %@", [metaMetaSO siteURL]);
 	
 	SKSite * su = [[SKSiteManager sharedManager] superUserSite];
 	SKSite * metaSU = [su metaSite];
