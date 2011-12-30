@@ -65,9 +65,6 @@ SK_GETTER(NSURL *, linkURL);
     return @"link";
 }
 
-+ (NSString *) apiResponseDataKey {
-    return @"items";
-}
 - (id) transformValueToMerge:(id)value forProperty:(NSString *)property {
     if ([property isEqualToString:@"type"]) {
         

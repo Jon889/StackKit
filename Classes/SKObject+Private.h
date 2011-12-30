@@ -28,8 +28,6 @@
 // maps an API response key to the name of an object property
 + (NSDictionary *) APIAttributeToPropertyMapping;
 
-// the key under which response data is found
-+ (NSString *) apiResponseDataKey;
 
 // the key by which response data is uniquely identified
 + (NSString *) apiResponseUniqueIDKey;

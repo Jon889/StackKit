@@ -36,10 +36,6 @@
     return mapping;
 }
 
-+ (NSString *)apiResponseDataKey {
-    return @"questions";
-}
-
 + (NSString *)apiResponseUniqueIDKey {
     return SKAPIQuestion_ID;
 }

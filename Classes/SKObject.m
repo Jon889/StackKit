@@ -39,11 +39,6 @@
 	return nil;
 }
 
-+ (NSString *) apiResponseDataKey {
-	NSAssert(NO, ([NSString stringWithFormat:@"+[%@ %@] must be overridden", NSStringFromClass(self), NSStringFromSelector(_cmd)]));
-	return nil;
-}
-
 + (NSString *) apiResponseUniqueIDKey {
 	NSAssert(NO, ([NSString stringWithFormat:@"+[%@ %@] must be overridden", NSStringFromClass(self), NSStringFromSelector(_cmd)]));
 	return nil;

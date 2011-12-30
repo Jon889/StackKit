@@ -24,10 +24,6 @@
 	return mapping;
 }
 
-+ (NSString *) apiResponseDataKey {
-	return @"tags";
-}
-
 + (NSString *) apiResponseUniqueIDKey {
     return SKAPIName;
 }

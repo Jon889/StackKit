@@ -15,10 +15,6 @@
 
 @implementation SKComment 
 
-+ (NSString *) apiResponseDataKey {
-	return @"comments";
-}
-
 + (NSString *) apiResponseUniqueIDKey {
 	return SKAPIComment_ID;
 }

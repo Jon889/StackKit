@@ -92,10 +92,6 @@ NSString * const SKUserAccountTypeModerator = @"moderator";
     return SKAPIUser_ID;
 }
 
-+ (NSString *) apiResponseDataKey {
-    return @"users";
-}
-
 - (id)transformValueToMerge:(id)value forRelationship:(NSString *)relationship {
     // override for the sake of completeness
     return [super transformValueToMerge:value forRelationship:relationship];

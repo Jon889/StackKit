@@ -27,10 +27,6 @@
     return mapping;
 }
 
-+ (NSString *) apiResponseDataKey {
-	return @"answers";
-}
-
 + (NSString *) apiResponseUniqueIDKey {
 	return SKAPIAnswer_ID;
 }

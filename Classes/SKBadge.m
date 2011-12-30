@@ -16,10 +16,6 @@
 
 @implementation SKBadge 
 
-+ (NSString *) apiResponseDataKey {
-    return @"badges";
-}
-
 + (NSString *) apiResponseUniqueIDKey {
     return SKAPIBadge_ID;
 }
