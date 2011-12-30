@@ -47,6 +47,7 @@ NSString * const SKAPIAssociation_ID = @"association_id";
 NSString * const SKAPIAward_Count = @"award_count";
 NSString * const SKAPIAwards = @"awards";
 NSString * const SKAPIBadge_ID = @"badge_id";
+NSString * const SKAPIBadge_Type = @"badge_type";
 NSString * const SKAPIBody = @"body";
 NSString * const SKAPIBounty_Amount = @"bounty_amount";
 NSString * const SKAPIBounty_Closes_Date = @"bounty_closes_date";

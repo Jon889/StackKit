@@ -18,9 +18,8 @@
 @property (nonatomic, readonly) NSNumber * numberAwarded;
 @property (nonatomic, readonly) NSNumber * rank;
 @property (nonatomic, readonly) NSString * summary;
-@property (nonatomic, readonly) NSNumber * tagBased;
+@property (nonatomic, readonly) NSNumber * badgeType;// named, or tag_based
 
 @property (nonatomic, readonly) NSSet* awards;
 
 @end
-

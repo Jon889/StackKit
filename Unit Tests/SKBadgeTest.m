@@ -34,7 +34,7 @@
 	
 	SKFetchRequest * r = [[SKFetchRequest alloc] init];
 	[r setEntity:[SKBadge class]];
-	[r setPredicate:[NSPredicate predicateWithFormat:@"tagBased = %@", [NSNumber numberWithBool:NO]]];
+	[r setPredicate:[NSPredicate predicateWithFormat:@"badgeType = %@", [NSNumber numberWithInt:SKBadgeTypeNamed]]];
 
 	NSArray * badges = [site executeSynchronousFetchRequest:r];
 	
@@ -42,7 +42,7 @@
 	[r release];
 	
 	for (SKBadge * badge in badges) {
-		STAssertFalse([[badge tagBased] boolValue], @"Unexpected tag-based badge: %@", badge);
+		STAssertFalse([[badge badgeType] intValue] == SKBadgeTypeTagBased, @"Unexpected tag-based badge: %@", [badge name]);
 	}
 }
 
@@ -51,7 +51,7 @@
 	
 	SKFetchRequest * r = [[SKFetchRequest alloc] init];
 	[r setEntity:[SKBadge class]];
-	[r setPredicate:[NSPredicate predicateWithFormat:@"tagBased = %@", [NSNumber numberWithBool:YES]]];
+	[r setPredicate:[NSPredicate predicateWithFormat:@"badgeType = %@", [NSNumber numberWithInt:SKBadgeTypeTagBased]]];
 	
 	NSArray * badges = [site executeSynchronousFetchRequest:r];
 	
@@ -59,31 +59,31 @@
 	[r release];
 	
 	for (SKBadge * badge in badges) {
-		STAssertTrue([[badge tagBased] boolValue], @"badge %@ should be tag-based", [badge name]);
+		STAssertTrue([[badge badgeType] intValue] == SKBadgeTypeTagBased, @"badge %@ should be tag-based", [badge name]);
 	}
 }
-
-- (void) testBadgesForUser {
-	SKSite * site = [[SKSiteManager sharedManager] stackOverflowSite];
-	
-	SKFetchRequest * r = [[SKFetchRequest alloc] init];
-	[r setEntity:[SKBadge class]];
-	[r setPredicate:[NSPredicate predicateWithFormat:@"userID = %@", [NSNumber numberWithInt:115730]]];
-	
-	NSArray * badges = [site executeSynchronousFetchRequest:r];
-	[r release];
-	
-	int badgeCount[3] = {0, 0, 0};
-	
-	for (SKBadge * badge in badges) {
-		SKBadgeRank_t rank = [[badge rank] intValue];
-		badgeCount[rank] += [[badge numberAwarded] intValue];
-	}
-	
-	STAssertTrue(badgeCount[SKBadgeRankBronze] >= 35, @"bronze badge rank does not match (%d)", badgeCount[SKBadgeRankBronze]);
-	STAssertTrue(badgeCount[SKBadgeRankSilver] >= 21, @"silver badge rank does not match (%d)", badgeCount[SKBadgeRankSilver]);
-	STAssertTrue(badgeCount[SKBadgeRankGold] >= 2, @"gold badge rank does not match (%d)", badgeCount[SKBadgeRankGold]);
-}
+//SEEMINGLY OLD TEST (pre coredata)
+//- (void) testBadgesForUser {
+//	SKSite * site = [[SKSiteManager sharedManager] stackOverflowSite];
+//	
+//	SKFetchRequest * r = [[SKFetchRequest alloc] init];
+//	[r setEntity:[SKBadge class]];
+//	[r setPredicate:[NSPredicate predicateWithFormat:@"userID = %@", [NSNumber numberWithInt:115730]]];
+//	
+//	NSArray * badges = [site executeSynchronousFetchRequest:r];
+//	[r release];
+//	
+//	int badgeCount[3] = {0, 0, 0};
+//	
+//	for (SKBadge * badge in badges) {
+//		SKBadgeRank_t rank = [[badge rank] intValue];
+//		badgeCount[rank] += [[badge numberAwarded] intValue];
+//	}
+//	
+//	STAssertTrue(badgeCount[SKBadgeRankBronze] >= 35, @"bronze badge rank does not match (%d)", badgeCount[SKBadgeRankBronze]);
+//	STAssertTrue(badgeCount[SKBadgeRankSilver] >= 21, @"silver badge rank does not match (%d)", badgeCount[SKBadgeRankSilver]);
+//	STAssertTrue(badgeCount[SKBadgeRankGold] >= 2, @"gold badge rank does not match (%d)", badgeCount[SKBadgeRankGold]);
+//}
 
 - (void) testUserBadges {
 	SKSite * site = [[SKSiteManager sharedManager] stackOverflowSite];

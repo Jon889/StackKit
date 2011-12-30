@@ -34,13 +34,13 @@
 
 + (NSDictionary *) recognizedPredicateKeyPaths {
 	return [NSDictionary dictionaryWithObjectsAndKeys:
-			SK_BOX(NSEqualToPredicateOperatorType), @"tagBased",
+			SK_BOX(NSEqualToPredicateOperatorType), @"badgeType",
 			nil];
 }
 
 + (NSSet *) requiredPredicateKeyPaths {
 	return [NSSet setWithObjects:
-			@"tagBased",
+			@"badgeType",
 			nil];
 }
 
@@ -55,8 +55,8 @@
 		[self setError:SK_SORTERROR(@"badges can only be requested in ascending order")];
 	}
 	
-	id tagBased = [[self requestPredicate] sk_constantValueForLeftKeyPath:@"tagBased"];
-	if ([tagBased isKindOfClass:[NSNumber class]] == NO || [tagBased boolValue] == YES) {
+	id badgeType = [[self requestPredicate] sk_constantValueForLeftKeyPath:@"badgeType"];
+	if ([badgeType isKindOfClass:[NSNumber class]] == NO || [badgeType intValue] != SKBadgeTypeNamed) {
 		[self setError:SK_PREDERROR(@"Invalid predicate for fetching named badges")];
 	}
 	

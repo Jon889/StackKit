@@ -67,6 +67,7 @@ extern NSString * const SKAPIAssociation_ID;
 extern NSString * const SKAPIAward_Count;
 extern NSString * const SKAPIAwards;
 extern NSString * const SKAPIBadge_ID;
+extern NSString * const SKAPIBadge_Type;
 extern NSString * const SKAPIBody;
 extern NSString * const SKAPIBounty_Amount;
 extern NSString * const SKAPIBounty_Closes_Date;

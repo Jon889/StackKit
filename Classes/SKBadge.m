@@ -29,8 +29,8 @@
                    @"numberAwarded", SKAPIAward_Count,
                    @"rank", SKAPIRank,
                    @"summary", SKAPIDescription,
-                   @"tagBased", SKAPITag_Based,
-                   @"awards", @"awards",
+                   @"badgeType", SKAPIBadge_Type,
+                   @"awards", SKAPIAwards,
                    nil];
     }
     return mapping;
@@ -44,7 +44,7 @@
                               [dictionary objectForKey:SKAPIUser], SKAPIUser,
                               nil];
         [mutable setObject:user forKey:@"awards"];
-        [mutable removeObjectForKey:SKAPIAward_Count];
+        //[mutable removeObjectForKey:SKAPIAward_Count];
         dictionary = [mutable autorelease];
     }
     [super mergeInformationFromAPIResponseDictionary:dictionary];
@@ -59,6 +59,13 @@
 			rank = SKBadgeRankSilver;
 		}
         return [NSNumber numberWithInt:rank];
+    }
+    if ([property isEqualToString:@"badgeType"]) {
+		SKBadgeType_t type = SKBadgeTypeNamed;
+		if ([value isEqual:SKAPITag_Based]) {
+			type = SKBadgeTypeTagBased;
+		}
+        return [NSNumber numberWithInt:type];
     }
     return [super transformValueToMerge:value forProperty:property];
 }
@@ -94,7 +101,7 @@ SK_GETTER(NSString *, name);
 SK_GETTER(NSNumber *, numberAwarded);
 SK_GETTER(NSNumber *, rank);
 SK_GETTER(NSString *, summary);
-SK_GETTER(NSNumber *, tagBased);
+SK_GETTER(NSNumber *, badgeType);
 SK_GETTER(NSSet*, awards);
 
 @end

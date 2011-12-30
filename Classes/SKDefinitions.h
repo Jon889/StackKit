@@ -72,6 +72,12 @@ typedef enum {
 } SKBadgeRank_t;
 
 typedef enum {
+	SKBadgeTypeNamed = 0,
+	SKBadgeTypeTagBased = 1
+} SKBadgeType_t;
+
+
+typedef enum {
 	SKPostTypeQuestion = 0,
 	SKPostTypeAnswer = 1
 } SKPostType_t;
